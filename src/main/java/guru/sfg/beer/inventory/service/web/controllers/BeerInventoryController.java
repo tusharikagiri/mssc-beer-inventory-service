@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import guru.sfg.beer.inventory.service.repositories.BeerInventoryRepository;
 import guru.sfg.beer.inventory.service.web.mappers.BeerInventoryMapper;
-import guru.sfg.beer.inventory.service.web.model.BeerInventoryDto;
+import guru.sfg.brewery.model.BeerInventoryDto;
 
 import java.util.List;
 import java.util.UUID;

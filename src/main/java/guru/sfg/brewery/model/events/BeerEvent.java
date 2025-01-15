@@ -1,4 +1,4 @@
-package guru.sfg.beer.common.events;
+package guru.sfg.brewery.model.events;
 
 import java.io.Serializable;
 
