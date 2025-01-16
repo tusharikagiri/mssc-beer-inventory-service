@@ -11,6 +11,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Configuration
 public class JmsConfig {
 	public static final String NEW_INVENTORY_QUEUE = "new-inventory";
+	public static final String ALLOCATE_ORDER_REQUEST_QUEUE = "allocate-order-request";
+	public static final String ALLOCATE_ORDER_RESULT_QUEUE = "allocate-order-result";
 
 	@Bean
 	public MessageConverter messageConverter(ObjectMapper objectMapper) {
