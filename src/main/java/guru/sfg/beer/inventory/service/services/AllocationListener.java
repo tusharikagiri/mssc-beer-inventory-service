@@ -33,8 +33,10 @@ public class AllocationListener {
 			} else {
 				builder.pendingInventory(true);
 			}
+			builder.allocationError(false);
 		} catch (Exception ex) {
-			log.error("Error occurred during allocating order for beerOrderId " + allocateOrderRequest.getBeerOrderDto().getId());
+			log.error("Error occurred during allocating order for beerOrderId "
+					+ allocateOrderRequest.getBeerOrderDto().getId());
 			builder.allocationError(true);
 		}
 
