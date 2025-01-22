@@ -17,6 +17,7 @@ import java.util.UUID;
 @Builder
 public class BeerInventoryDto {
     private UUID id;
+    private Long version;
     private OffsetDateTime createdDate;
     private OffsetDateTime lastModifiedDate;
     private UUID beerId;

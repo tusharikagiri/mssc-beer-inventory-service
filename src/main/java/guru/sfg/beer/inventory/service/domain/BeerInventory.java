@@ -16,7 +16,9 @@
  */
 package guru.sfg.beer.inventory.service.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,9 +27,15 @@ import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.UUID;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Version;
 
 /**
  * Created by jt on 2019-01-26.
@@ -35,20 +43,36 @@ import jakarta.persistence.Entity;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class BeerInventory extends BaseEntity{
+@Builder
+public class BeerInventory {
 
-    @Builder
-    public BeerInventory(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate, UUID beerId,
-                         String upc, Integer quantityOnHand) {
-        super(id, version, createdDate, lastModifiedDate);
-        this.beerId = beerId;
-        this.upc = upc;
-        this.quantityOnHand = quantityOnHand;
-    }
+	@Id
+	@GeneratedValue
+	@JdbcTypeCode(Types.VARCHAR)
+	@Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
+	private UUID id;
 
-    @JdbcTypeCode(Types.VARCHAR)
-    private UUID beerId;
-    private String upc;
-    private Integer quantityOnHand = 0;
+	@Version
+	private Long version;
+
+	@CreationTimestamp
+	@Column(updatable = false)
+	private Timestamp createdDate;
+
+	@UpdateTimestamp
+	private Timestamp lastModifiedDate;
+
+	@JdbcTypeCode(Types.VARCHAR)
+	private UUID beerId;
+
+	private String upc;
+
+	@Default
+	private Integer quantityOnHand = 0;
+
+	public boolean isNew() {
+		return this.id == null;
+	}
 }
