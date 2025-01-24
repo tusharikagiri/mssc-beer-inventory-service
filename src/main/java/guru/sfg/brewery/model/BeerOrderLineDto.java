@@ -17,18 +17,18 @@
 
 package guru.sfg.brewery.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Builder.Default;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
@@ -53,7 +53,8 @@ public class BeerOrderLineDto {
     private String upc;
     private String beerName;
     private UUID beerId;
-    private Integer orderQuantity = 0;
+    @Default
+	private Integer orderQuantity = 0;
     private String beerStyle;
     private Integer quantityAllocated;
     private BigDecimal price;

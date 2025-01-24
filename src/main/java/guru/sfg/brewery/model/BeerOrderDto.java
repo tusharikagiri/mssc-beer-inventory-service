@@ -19,6 +19,7 @@ package guru.sfg.brewery.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -37,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @AllArgsConstructor
 public class BeerOrderDto {
 
+	@Default
 	@JsonProperty("id")
     private UUID id = null;
 
